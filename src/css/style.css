@@ -83,3 +83,7 @@
 .load-more-btn:hover {
   background-color: #303f9f;
 }
+
+.form {
+    text-align: center;
+}

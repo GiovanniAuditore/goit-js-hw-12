@@ -1,3 +1,4 @@
+// render-functions.js
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -5,7 +6,6 @@ let lightbox = new SimpleLightbox('.gallery a');
 
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
-const loadMoreBtn = document.querySelector('.load-more');
 
 export function createGallery(images) {
   const markup = images
@@ -24,6 +24,7 @@ export function createGallery(images) {
         </li>`
     )
     .join('');
+
   gallery.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
 }
@@ -33,17 +34,19 @@ export function clearGallery() {
 }
 
 export function showLoader() {
-  loader.classList.remove('is-hidden');
+  if (loader) loader.classList.remove('is-hidden');
 }
 
 export function hideLoader() {
-  loader.classList.add('is-hidden');
+  if (loader) loader.classList.add('is-hidden');
 }
 
 export function showLoadMoreButton() {
-  loadMoreBtn.classList.remove('is-hidden');
+  const loadMoreBtn = document.querySelector('.load-more-btn');
+  if (loadMoreBtn) loadMoreBtn.classList.remove('is-hidden');
 }
 
 export function hideLoadMoreButton() {
-  loadMoreBtn.classList.add('is-hidden');
+  const loadMoreBtn = document.querySelector('.load-more-btn');
+  if (loadMoreBtn) loadMoreBtn.classList.add('is-hidden');
 }
